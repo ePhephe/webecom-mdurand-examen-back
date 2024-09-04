@@ -1,0 +1,237 @@
+{
+    "type": "modele",
+    "table": "commande",
+    "champ_id": "c_id",
+    "links": [
+        {
+            "table": "utilisateur",
+            "cle": "c_ref_user_preparation"
+        },
+        {
+            "table": "utilisateur",
+            "cle": "c_ref_user_livraison"
+        }
+    ],
+    "fields": [
+        {
+            "name": "c_num_cde",
+            "type": "text",
+            "libelle": "Numéro de la commande",
+            "nomObjet": "",
+            "unicite": false,
+            "visibilite": true,
+            "contraintes": {
+                "min_length": 1,
+                "max_length": 10
+            }
+        },{
+            "name": "c_ref_cde",
+            "type": "text",
+            "libelle": "Référence de la commande",
+            "nomObjet": "",
+            "unicite": false,
+            "visibilite": true,
+            "contraintes": {
+                "min_length": 1,
+                "max_length": 10
+            }
+        },{
+            "name": "c_type_service",
+            "type": "text",
+            "libelle": "Type de service",
+            "nomObjet": "",
+            "unicite": false,
+            "visibilite": true,
+            "input": {
+                "name": "c_type_service",
+                "id": "c_type_service",
+                "placeholder": "Sur place ou à emporter",
+                "type": "select",
+                "step": "",
+                "confirmationNeeded": false
+            },
+            "contraintes": {
+                "min_length": 1,
+                "max_length": 500
+            },
+            "listeCleValeur": [
+                {
+                    "cle": "SP",
+                    "valeur": "Sur place"
+                },
+                {
+                    "cle": "AE",
+                    "valeur": "A emporter"
+                }
+            ]
+        },{
+            "name": "c_num_chevalet",
+            "type": "integer",
+            "libelle": "Numéro de chevalet",
+            "nomObjet": "",
+            "unicite": false,
+            "visibilite": true,
+            "input": {
+                "name": "c_num_chevalet",
+                "id": "c_num_chevalet",
+                "placeholder": "Pour le service sur place",
+                "type": "integer",
+                "step": "1",
+                "confirmationNeeded": false
+            },
+            "contraintes": {
+                "min": 0,
+                "max": 999
+            }
+        },{
+            "name": "c_commentaire",
+            "type": "text",
+            "libelle": "Commentaire",
+            "nomObjet": "",
+            "unicite": false,
+            "visibilite": true,
+            "input": {
+                "name": "c_commentaire",
+                "id": "c_commentaire",
+                "placeholder": "Précisions éventuelles (allergies, demande spéciale...)",
+                "type": "textarea",
+                "step": "",
+                "confirmationNeeded": false
+            },
+            "contraintes": {
+                "min_length": 1,
+                "max_length": 500
+            }
+        },
+        {
+            "name": "c_statut",
+            "type": "text",
+            "libelle": "Statut de la commande",
+            "nomObjet": "",
+            "unicite": false,
+            "visibilite": true,
+            "contraintes": {
+                "min_length": 1,
+                "max_length": 3
+            },
+            "listeCleValeur": [
+                {
+                    "cle": "C",
+                    "valeur": "Créée"
+                },
+                {
+                    "cle": "AP",
+                    "valeur": "A préparer"
+                },
+                {
+                    "cle": "P",
+                    "valeur": "Prête"
+                },
+                {
+                    "cle": "L",
+                    "valeur": "Livrée"
+                },
+                {
+                    "cle": "S",
+                    "valeur": "Supprimée"
+                }
+            ]
+        },
+        {
+            "name": "c_datetime_creation",
+            "type": "datetime",
+            "libelle": "",
+            "nomObjet": "",
+            "unicite": false,
+            "visibilite": true,
+            "formats": {
+                "bdd": "Y-m-d H:i:s",
+                "affichage": "d/m/Y H:i:s"
+            }
+        },
+        {
+            "name": "c_datetime_modification",
+            "type": "datetime",
+            "libelle": "",
+            "nomObjet": "",
+            "unicite": false,
+            "visibilite": true,
+            "formats": {
+                "bdd": "Y-m-d H:i:s",
+                "affichage": "d/m/Y H:i:s"
+            }
+        },
+        {
+            "name": "c_datetime_suppression",
+            "type": "datetime",
+            "libelle": "",
+            "nomObjet": "",
+            "unicite": false,
+            "visibilite": true,
+            "formats": {
+                "bdd": "Y-m-d H:i:s",
+                "affichage": "d/m/Y H:i:s"
+            }
+        },{
+            "name": "c_ref_user_preparation",
+            "type": "integer",
+            "libelle": "Préparateur",
+            "nomObjet": "utilisateur",
+            "unicite": false,
+            "visibilite": true
+        },
+        {
+            "name": "c_datetime_preparation",
+            "type": "datetime",
+            "libelle": "",
+            "nomObjet": "",
+            "unicite": false,
+            "visibilite": true,
+            "formats": {
+                "bdd": "Y-m-d H:i:s",
+                "affichage": "d/m/Y H:i:s"
+            }
+        },{
+            "name": "c_ref_user_livraison",
+            "type": "integer",
+            "libelle": "Livreur",
+            "nomObjet": "utilisateur",
+            "unicite": false,
+            "visibilite": true
+        },
+        {
+            "name": "c_datetime_livraison",
+            "type": "datetime",
+            "libelle": "",
+            "nomObjet": "",
+            "unicite": false,
+            "visibilite": true,
+            "formats": {
+                "bdd": "Y-m-d H:i:s",
+                "affichage": "d/m/Y H:i:s"
+            }
+        }
+    ],
+    "actions": [
+        {
+            "action": "create",
+            "url": "creer_commande"
+        },
+        {
+            "action": "read",
+            "url": "detail_commande"
+        },
+        {
+            "action": "update",
+            "url": "modifier_commande"
+        },
+        {
+            "action": "delete",
+            "url": "supprimer_commande"
+        },
+        {
+            "action": "list",
+            "url": "lister_commande"
+        }
+    ]
+}

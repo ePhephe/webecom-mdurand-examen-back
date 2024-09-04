@@ -1,0 +1,111 @@
+{
+    "type": "modele",
+    "table": "format",
+    "champ_id": "f_id",
+    "links": [
+        {
+            "table": "categorie",
+            "cle": "f_ref_categorie"
+        }
+    ],
+    "fields": [
+        {
+            "name": "f_libelle",
+            "type": "text",
+            "libelle": "Libellé",
+            "nomObjet": "",
+            "unicite": false,
+            "visibilite": true,
+            "contraintes": {
+                "min_length": 1,
+                "max_length": 100
+            }
+        },
+        {
+            "name": "f_format_standard",
+            "type": "text",
+            "libelle": "Format normalisé",
+            "nomObjet": "",
+            "unicite": false,
+            "visibilite": true,
+            "input": {
+                "name": "f_format_standard",
+                "id": "f_format_standard",
+                "placeholder": "Format standard",
+                "type": "select",
+                "confirmationNeeded": false
+            },
+            "contraintes": {
+                "min_length": 1,
+                "max_length": 3
+            },
+            "listeCleValeur": [
+                {
+                    "cle": "S",
+                    "valeur": "Small"
+                },
+                {
+                    "cle": "N",
+                    "valeur": "Normal"
+                },
+                {
+                    "cle": "XL",
+                    "valeur": "Extra Large"
+                }
+            ]
+        },
+        {
+            "name": "f_format_prix",
+            "type": "float",
+            "libelle": "Impact prix",
+            "nomObjet": "",
+            "unicite": false,
+            "visibilite": true,
+            "input": {
+                "name": "f_format_prix",
+                "id": "f_format_prix",
+                "placeholder": "Impact sur le prix du produit",
+                "type": "integer",
+                "step":"0.1",
+                "confirmationNeeded": false
+            }
+        },
+        {
+            "name": "f_ref_categorie",
+            "type": "integer",
+            "libelle": "Catégorie associée",
+            "nomObjet": "categorie",
+            "unicite": false,
+            "visibilite": true,
+            "input": {
+                "name": "f_ref_categorie",
+                "id": "f_ref_categorie",
+                "placeholder": "Catégorie associée à ce format",
+                "type": "select",
+                "confirmationNeeded": false
+            }
+        }
+    ],
+    "actions": [
+        {
+            "action": "create",
+            "url": "creer_format"
+        },
+        {
+            "action": "read",
+            "url": "detail_format"
+        },
+        {
+            "action": "update",
+            "url": "modifier_format"
+        },
+        {
+            "action": "delete",
+            "url": "supprimer_format"
+        },
+        {
+            "action": "list",
+            "url": "lister_format"
+        }
+    ]
+}

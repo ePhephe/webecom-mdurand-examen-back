@@ -1,0 +1,88 @@
+{
+    "type": "modele",
+    "table": "menu",
+    "champ_id": "m_id",
+    "links": [
+        {
+            "table": "categorie",
+            "cle": "m_ref_categorie_possible"
+        },
+        {
+            "table": "produit",
+            "cle": "m_ref_produit_menu"
+        }
+    ],
+    "fields": [
+        {
+            "name": "m_libelle",
+            "type": "text",
+            "libelle": "Libellé de la possiblité dans le menu",
+            "nomObjet": "",
+            "unicite": false,
+            "visibilite": true,
+            "input": {
+                "name": "m_libelle",
+                "id": "m_libelle",
+                "placeholder": "(Ex. Accompagnement, boisson, sauce...)",
+                "type": "text",
+                "step": "",
+                "confirmationNeeded": false
+            },
+            "contraintes": {
+                "min_length": 1,
+                "max_length": 100
+            }
+        },{
+            "name": "m_ref_categorie_possible",
+            "type": "integer",
+            "libelle": "Catégorie possible",
+            "nomObjet": "categorie",
+            "unicite": false,
+            "visibilite": true,
+            "input": {
+                "name": "m_ref_categorie_possible",
+                "id": "m_ref_categorie_possible",
+                "placeholder": "Catégorie possible",
+                "type": "select",
+                "confirmationNeeded": false
+            }
+        },
+        {
+            "name": "m_ref_produit_menu",
+            "type": "integer",
+            "libelle": "Produit de type menu concerné",
+            "nomObjet": "produit",
+            "unicite": false,
+            "visibilite": true,
+            "input": {
+                "name": "m_ref_produit_menu",
+                "id": "m_ref_produit_menu",
+                "placeholder": "Produit de type menu concerné",
+                "type": "select",
+                "confirmationNeeded": false
+            }
+        }
+    ],
+    "actions": [
+        {
+            "action": "create",
+            "url": "creer_menu"
+        },
+        {
+            "action": "read",
+            "url": "detail_menu"
+        },
+        {
+            "action": "update",
+            "url": "modifier_menu"
+        },
+        {
+            "action": "delete",
+            "url": "supprimer_menu"
+        },
+        {
+            "action": "list",
+            "url": "lister_menu"
+        }
+    ]
+}

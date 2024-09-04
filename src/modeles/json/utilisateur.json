@@ -1,0 +1,210 @@
+{
+    "type": "modele",
+    "table": "utilisateur",
+    "champ_id": "u_id",
+    "links": [
+        {
+            "table": "piecejointe",
+            "cle": "u_ref_piecejointe_photo"
+        }
+    ],
+    "fields": [
+        {
+            "name": "u_nom",
+            "type": "text",
+            "libelle": "Nom",
+            "nomObjet": "",
+            "unicite": false,
+            "visibilite": true,
+            "input": {
+                "name": "u_nom",
+                "id": "u_nom",
+                "placeholder": "Nom d'utilisateur",
+                "type": "text",
+                "step": "",
+                "confirmationNeeded": false
+            },
+            "contraintes": {
+                "min_length": 1,
+                "max_length": 100
+            }
+        },
+        {
+            "name": "u_prenom",
+            "type": "text",
+            "libelle": "Prénom",
+            "nomObjet": "",
+            "unicite": false,
+            "visibilite": true,
+            "input": {
+                "name": "u_prenom",
+                "id": "u_prenom",
+                "placeholder": "Prénom d'utilisateur",
+                "type": "text",
+                "step": "",
+                "confirmationNeeded": false
+            },
+            "contraintes": {
+                "min_length": 1,
+                "max_length": 150
+            }
+        },
+        {
+            "name": "u_role_user",
+            "type": "text",
+            "libelle": "Rôle de l'utilisateur",
+            "nomObjet": "",
+            "unicite": false,
+            "visibilite": true,
+            "input": {
+                "name": "u_role_user",
+                "id": "u_role_user",
+                "placeholder": "Choisssez le rôle de l'utilisateur à créer",
+                "type": "select",
+                "confirmationNeeded": false
+            },
+            "contraintes": {
+                "min_length": 1,
+                "max_length": 50
+            },
+            "listeCleValeur": [
+                {
+                    "cle": "ADMIN",
+                    "valeur": "Administrateur"
+                },
+                {
+                    "cle": "ACCUEIL",
+                    "valeur": "Equipier accueil"
+                },
+                {
+                    "cle": "PREPARATION",
+                    "valeur": "Equipier préparation"
+                },
+                {
+                    "cle": "SUPERVISEUR",
+                    "valeur": "Superviseur"
+                }
+            ]
+        },
+        {
+            "name": "u_statut",
+            "type": "text",
+            "libelle": "Statut de l'utilisateur",
+            "nomObjet": "",
+            "unicite": false,
+            "visibilite": true,
+            "contraintes": {
+                "min_length": 1,
+                "max_length": 3
+            },
+            "listeCleValeur": [
+                {
+                    "cle": "A",
+                    "valeur": "Actif"
+                },
+                {
+                    "cle": "D",
+                    "valeur": "Désactivé"
+                }
+            ]
+        },
+        {
+            "name": "u_email",
+            "type": "text",
+            "libelle": "Adresse e-mail",
+            "nomObjet": "",
+            "unicite": false,
+            "visibilite": true,
+            "input": {
+                "name": "u_email",
+                "id": "u_email",
+                "placeholder": "E-mail qui servira d'identifiant",
+                "type": "email",
+                "step": "",
+                "confirmationNeeded": true
+            },
+            "contraintes": {
+                "min_length": 1,
+                "max_length": 320
+            }
+        },
+        {
+            "name": "u_password",
+            "type": "password",
+            "libelle": "Mot de passe",
+            "nomObjet": "",
+            "unicite": false,
+            "visibilite": false,
+            "input": {
+                "name": "u_password",
+                "id": "u_password",
+                "placeholder": "Mot de passe de 8 à 16 caractères",
+                "type": "password",
+                "step": "",
+                "confirmationNeeded": true
+            },
+            "contraintes": {
+                "min_length": 8,
+                "max_length": 16
+            }
+        },
+        {
+            "name": "u_selector_reini_password",
+            "type": "text",
+            "libelle": "",
+            "nomObjet": "",
+            "unicite": false,
+            "visibilite": false,
+            "contraintes": {
+                "min_length": 16,
+                "max_length": 16
+            }
+        },
+        {
+            "name": "u_token_reini_password",
+            "type": "text",
+            "libelle": "",
+            "nomObjet": "",
+            "unicite": false,
+            "visibilite": false,
+            "contraintes": {
+                "min_length": 50,
+                "max_length": 100
+            }
+        },
+        {
+            "name": "u_expiration_reini_password",
+            "type": "datetime",
+            "libelle": "",
+            "nomObjet": "",
+            "unicite": false,
+            "visibilite": false,
+            "formats": {
+                "bdd": "Y-m-d H:i:s",
+                "affichage": "d/m/Y H:i:s"
+            }
+        }
+    ],
+    "actions": [
+        {
+            "action": "create",
+            "url": "creer_utilisateur"
+        },
+        {
+            "action": "read",
+            "url": "detail_utilisateur"
+        },
+        {
+            "action": "update",
+            "url": "modifier_utilisateur"
+        },
+        {
+            "action": "delete",
+            "url": "supprimer_utilisateur"
+        },
+        {
+            "action": "list",
+            "url": "lister_utilisateur"
+        }
+    ]
+}

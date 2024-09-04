@@ -1,0 +1,42 @@
+{
+    "type": "modele",
+    "table": "categorie",
+    "champ_id": "ca_id",
+    "links": [],
+    "fields": [
+        {
+            "name": "ca_libelle",
+            "type": "text",
+            "libelle": "Libellé",
+            "nomObjet": "",
+            "unicite": false,
+            "visibilite": true,
+            "contraintes": {
+                "min_length": 1,
+                "max_length": 100
+            }
+        }
+    ],
+    "actions": [
+        {
+            "action": "create",
+            "url": "creer_categorie"
+        },
+        {
+            "action": "read",
+            "url": "detail_categorie"
+        },
+        {
+            "action": "update",
+            "url": "modifier_categorie"
+        },
+        {
+            "action": "delete",
+            "url": "supprimer_categorie"
+        },
+        {
+            "action": "list",
+            "url": "lister_categorie"
+        }
+    ]
+}

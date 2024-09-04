@@ -1,0 +1,482 @@
+/********** Import des fichiers de base ***********/
+@import "./reset.scss";
+@import "./variables.scss";
+/********** Import des composants ***********/
+@import "./components/_layout.scss";
+@import "./components/_flexbox.scss";
+@import "./components/_menu-burger.scss";
+@import "./components/_switch.scss";
+
+/********** Règles Générales ***********/
+body {
+    font-family: var(--fontTexte);
+    background-color: var(--fifthColor);
+    min-height: 100vh;
+}
+main {
+    padding-bottom: 40px;
+}
+/* Titres */
+h1,h2,h3,h4,h5,h6 {
+    font-family: var(--fontTitre);
+    color: var(--fourthColor);
+}
+h1 {
+    font-size: 36px;
+    font-weight: 700;
+    text-align: center;
+}
+h2 {
+    font-size: 24px;
+    font-weight: 700;
+}
+/* Pour les liens */
+a {
+    color: inherit;
+    text-decoration: none;
+
+    // Eviter que les images soit la target des evenemnts click des liens
+    img {
+        pointer-events: none;
+    }
+}
+/* Pour les images responsives */
+.responsive {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+/* Classe pour masquer un élément */
+.display-none{
+    display: none;
+}
+/* Pastille de disponibilité */
+.dispo {
+    height: 24px;
+    width: 24px;
+    border-radius: 50%;
+
+    &.stock {
+        background-color: green;
+    }
+    &.rupture {
+        background-color: red;
+    }
+}
+
+/* Mise en forme des boutons */
+@mixin button-styles($bg-color) {
+    // Mixin pour le style général des boutons
+    color: var(--blackColor);
+    padding: 16px 32px;
+    border: none;
+    transition: all 0.3s;
+    background-color: $bg-color;
+    width: -moz-fit-content;
+    width: fit-content;
+    cursor: pointer;
+    border-radius: 8px;
+}
+
+@mixin button-hover {
+
+    // Mixin pour l'effet au hover des boutons
+    &:hover {
+        opacity: 0.8;
+    }
+}
+.button {
+    @include button-styles(var(--firstColor));
+    @include button-hover;
+
+    &.primary {
+        // Bouton principal
+        background-color: var(--firstColor);
+        font-weight: bold;
+    }
+
+    &.secondary {
+        // Bouton secondaire
+        background-color: transparent;
+        border: 1px solid var(--blackColor);
+
+        &:hover {
+            background-color: var(--secondColor);
+            color: var(--whiteColor);
+            border-color: var(--whiteColor);
+        }
+    }
+
+    &.disabled {
+        // Bouton désactivé
+        pointer-events: none;
+        cursor: default;
+        opacity: 0.5;
+    }
+}
+/* Style de la fenêtre modal */
+#container_modal_choix {
+    // Container global
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 100;
+    background-color: rgba(0, 0, 0, 0.25);
+    overflow-y: auto;
+
+    #modal_choix {
+        // Modal en elle-même
+        width: 40%;
+        padding: 20px;
+        border-radius: 16px;
+        background-color: var(--whiteColor);
+        box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.25);
+
+        h2 {
+            text-align: center;
+        }
+    }
+}
+// Messages de retour
+.message-retour {
+    font-weight: 700;
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    padding: 20px;
+    border-radius: 16px;
+    
+    &.erreur {
+        background-color: var(--errorColorLight);
+        border: 3px solid var(--errorColor);
+        color: var(--errorColor);
+    }
+    &.info {
+        background-color: var(--infoColorLight);
+        border: 3px solid var(--infoColor);
+        color: var(--infoColor);
+    }
+    &.succes {
+        background-color: var(--succesColorLight);
+        border: 3px solid var(--succesColor);
+        color: var(--succesColor);
+    }
+}
+// Modal des messages de retour ajax
+div.modal {
+    font-weight: 700;
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    width: 350px;
+    padding: 20px;
+    border-radius: 16px;
+    &.erreur {
+        background-color: var(--errorColorLight);
+        border: 3px solid var(--errorColor);
+        color: var(--errorColor);
+    }
+    &.succes {
+        background-color: var(--succesColorLight);
+        border: 3px solid var(--succesColor);
+        color: var(--succesColor);
+    }
+}
+/* Header */
+header {
+    height: 80px;
+    width: 100%;
+    position: fixed;
+    top:0;
+    left: 0;
+    background-color: var(--secondColor);
+    padding: 20px 40px;
+
+    .logo {
+        width:33px;
+        height: 29px;
+    }
+
+    li {
+        font-family: var(--fontTitre);
+        color: var(--whiteColor);
+        font-size: 24px;
+        
+        a {
+            &:hover{
+                color: var(--firstColor);
+                font-weight: 700;
+            }
+        }
+    }
+}
+// Div pour compenser le header fixed
+.header-fixed {
+    height: 80px;
+    width: 100%;
+    margin-bottom: 40px;
+}
+
+/********** Style des formulaires **********/
+/* Général */
+form {
+    width: 100%;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    border-radius: 16px;
+    background-color: var(--whiteColor);
+
+    .buttonForm {
+        display: flex;
+        gap: 20px;
+        justify-content: flex-end;
+    }
+}
+label {
+    font-weight: 600;
+}
+.div_input_form>div {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+select {
+    box-sizing: border-box;
+    font-family: var(--fontTexte);
+    height: 30px;
+    border-radius: 8px;
+    padding: 0 8px;
+    outline: none;
+    border: 1px solid var(--blackColor);
+}
+textarea {
+    min-height: 150px;
+    padding-left: 8px;
+    padding-top: 8px;
+    border-radius: 8px 8px 0px 8px;
+}
+input:not([type=submit]) {
+    box-sizing: border-box;
+    font-family: var(--fontTexte);
+    height: 30px;
+    border-radius: 8px;
+    padding-left: 8px;
+    outline: none;
+    border: 1px solid var(--blackColor);
+
+    &.input-error {
+        border: 2px solid var(--errorColor);
+    }
+
+    &:focus {
+        border: 2px solid var(--firstColor);
+    }
+}
+input[type=checkbox] {
+    height: fit-content;
+}
+input[type=file] {
+    padding: 20px;
+    height: auto;
+}
+input[type=submit] {
+    @include button-styles(var(--firstColor));
+    @include button-hover;
+
+    font-family: var(--fontTexte);
+    font-weight: 700;
+}
+input[type=button] {
+    @include button-styles(var(--secondColor));
+    @include button-hover;
+
+    height: fit-content;
+    font-family: var(--fontTexte);
+    font-weight: 700;
+    color: var(--whiteColor);
+}
+/* Classe pour gérer les erreurs des formulaires */
+.p-error {
+    color: var(--errorColor);
+    font-size: 0.8rem;
+    font-style: italic;
+}
+/* Spécifique */
+#form_connexion,#form_reini_password,#form_new_password {
+    width: 400px;
+    background-color: var(--secondColor);
+    color: var(--whiteColor);
+    gap: 40px;
+
+    input[type=submit] {
+        align-self: center;
+    }
+
+    &>div {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+/********** Style des tableaux **********/
+table {
+    background-color: var(--whiteColor);
+
+    thead {
+        tr {
+            background-color: var(--fourthColor);
+            color: var(--whiteColor);
+            height: 50px;
+        }
+    }
+
+    tbody {
+        tr {
+            height: 40px;
+            td {
+                padding-left: 8px;
+            }
+        }
+    }
+    
+}
+
+/********** Style des pages **********/
+#page-connexion,#page-reini-password,#page-new-password {
+    width: 100vw;
+    height: 100vh;
+}
+/* Liste des produits */
+.filtres {
+    border: 1px solid var(--sixthColor);
+    border-radius: 16px;
+    padding: 20px;
+    background-color: var(--whiteColor);
+
+    label {
+        font-weight: 400;
+    }
+
+    input {
+        &.libelle-recherche {
+            width: 250px;
+        }
+    }
+}
+.liste-produit-image {
+    width: 100px;
+}
+/* Liste des utilisateurs */
+.libelle-recherche-user {
+    width: 500px;
+}
+
+/* Construction de la commande */
+#page-construction-commande {
+    h1 {
+        width: calc(100% - 300px);
+    }
+}
+.commentaire-commande {
+    background-color: var(--firstColor);
+    padding: 10px;
+    border-radius: 8px;
+    color: var(--blackColor);
+    width: calc(100% - 300px);
+
+    span {
+        font-weight: 700;
+    }
+}
+.infos-commande {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    width: 300px;
+    min-height: calc(100vh - 80px);
+    max-height: calc(100vh - 80px);
+    background-color: var(--thirdColor);
+    padding: 10px;
+    flex-wrap: nowrap;
+
+    .header-commande {
+        border-bottom: 1px solid black;
+        gap:10px;
+        padding-bottom: 20px;
+        span {
+            font-weight: 700;
+        }
+    }
+
+    #produits_commande {
+        overflow-y: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        &>div {
+            font-weight: 700;
+        }
+    }
+
+
+    .footer-commande {
+        border-top: 1px solid black;
+        padding-top: 20px;
+    }
+
+    #total_commande {
+        font-weight: 700;
+        font-size: 24px;
+    }
+}
+.selection-produits {
+    width: calc(100% - 300px);
+
+    article {
+        border: 1px solid var(--sixthColor);
+        border-radius: 16px;
+        padding: 10px;
+        cursor: pointer;
+    }
+}
+.contenu-menu {
+    background-color: var(--secondColor);
+    padding: 20px;
+    color: var(--whiteColor);
+}
+/* Détail de la commande */
+.details-commande {
+    .header-commande {
+        span {
+            font-weight: 700;
+        }
+    }
+    #produits_commande{
+        background-color: var(--whiteColor);
+        padding: 20px;
+        border-radius: 8px;
+
+        div {
+            border: 1px solid var(--secondColor);
+            height: fit-content;
+            padding: 10px;
+            border-radius: 8px;
+        }
+        ul {
+            list-style-type: disc;
+            padding-left: 20px;
+            margin-top: 10px;
+        }
+    }
+    .footer-commande {
+        font-size: 24px;
+    }
+    #total_commande {
+        font-size: 32px;
+        font-weight: 700;
+    }
+}

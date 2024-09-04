@@ -1,0 +1,169 @@
+{
+    "type": "modele",
+    "table": "produit",
+    "champ_id": "p_id",
+    "links": [
+        {
+            "table": "piecejointe",
+            "cle": "p_ref_piecejointe_image"
+        },
+        {
+            "table": "categorie",
+            "cle": "p_ref_categorie"
+        }
+    ],
+    "fields": [
+        {
+            "name": "p_libelle",
+            "type": "text",
+            "libelle": "Nom du produit",
+            "nomObjet": "",
+            "unicite": false,
+            "visibilite": true,
+            "input": {
+                "name": "p_libelle",
+                "id": "p_libelle",
+                "placeholder": "Nom du produit",
+                "type": "text",
+                "step": "",
+                "confirmationNeeded": false
+            },
+            "contraintes": {
+                "min_length": 1,
+                "max_length": 100
+            }
+        },
+        {
+            "name": "p_ref_categorie",
+            "type": "integer",
+            "libelle": "Catégorie du produit",
+            "nomObjet": "categorie",
+            "unicite": false,
+            "visibilite": true,
+            "input": {
+                "name": "p_ref_categorie",
+                "id": "p_ref_categorie",
+                "placeholder": "Catégorie du produit",
+                "type": "select",
+                "confirmationNeeded": false
+            }
+        },
+        {
+            "name": "p_prix",
+            "type": "float",
+            "libelle": "Prix du produit",
+            "nomObjet": "",
+            "unicite": false,
+            "visibilite": true,
+            "input": {
+                "name": "p_prix",
+                "id": "p_prix",
+                "placeholder": "Prix du produit",
+                "type": "integer",
+                "step": "0.01",
+                "confirmationNeeded": false
+            },
+            "contraintes": {
+                "min": 0.01,
+                "max": 9999.99
+            }
+        },
+        {
+            "name": "p_description",
+            "type": "text",
+            "libelle": "Description du produit",
+            "nomObjet": "",
+            "unicite": false,
+            "visibilite": true,
+            "input": {
+                "name": "p_description",
+                "id": "p_description",
+                "placeholder": "Description du produit",
+                "type": "textarea",
+                "step": "",
+                "confirmationNeeded": false
+            },
+            "contraintes": {
+                "min_length": 1,
+                "max_length": 500
+            }
+        },
+        {
+            "name": "p_isdispo",
+            "type": "boolean",
+            "libelle": "Produit disponible",
+            "nomObjet": "",
+            "unicite": false,
+            "visibilite": true,
+            "input": {
+                "name": "p_isdispo",
+                "id": "p_isdispo",
+                "placeholder": "Produit disponible",
+                "type": "checkbox",
+                "step": "",
+                "confirmationNeeded": false
+            }
+        },
+        {
+            "name": "p_stock",
+            "type": "integer",
+            "libelle": "Stock du produit",
+            "nomObjet": "",
+            "unicite": false,
+            "visibilite": true,
+            "input": {
+                "name": "p_stock",
+                "id": "p_stock",
+                "placeholder": "Stock du produit",
+                "type": "integer",
+                "step": "1",
+                "confirmationNeeded": false
+            },
+            "contraintes": {
+                "min": 0,
+                "max": 9999
+            }
+        },
+        {
+            "name": "p_ref_piecejointe_image",
+            "type": "integer",
+            "libelle": "Photo du produit",
+            "nomObjet": "piecejointe",
+            "unicite": false,
+            "visibilite": true,
+            "input": {
+                "name": "p_ref_piecejointe_image",
+                "id": "p_ref_piecejointe_image",
+                "placeholder": "",
+                "type": "file",
+                "confirmationNeeded": false,
+                "accept": "image/*"
+            },
+            "contraintes": {
+                "size": 10000
+            }
+        }
+    ],
+    "actions": [
+        {
+            "action": "create",
+            "url": "creer_produit"
+        },
+        {
+            "action": "read",
+            "url": "detail_produit"
+        },
+        {
+            "action": "update",
+            "url": "modifier_produit"
+        },
+        {
+            "action": "delete",
+            "url": "supprimer_produit"
+        },
+        {
+            "action": "list",
+            "url": "lister_produit"
+        }
+    ]
+}

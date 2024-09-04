@@ -1,0 +1,117 @@
+{
+    "type": "modele",
+    "table": "commande_produit",
+    "champ_id": "cp_id",
+    "links": [
+        {
+            "table": "produit",
+            "cle": "cp_ref_produit"
+        },
+        {
+            "table": "produit",
+            "cle": "cp_ref_produit_menu"
+        },
+        {
+            "table": "commande_produit",
+            "cle": "cp_ref_menu_commande"
+        },
+        {
+            "table": "commande",
+            "cle": "cp_ref_commande"
+        },
+        {
+            "table": "format",
+            "cle": "cp_ref_format"
+        }
+    ],
+    "fields": [
+        {
+            "name": "cp_quantite",
+            "type": "integer",
+            "libelle": "Quantité du produit dans la commande",
+            "nomObjet": "",
+            "unicite": false,
+            "visibilite": true,
+            "input": {
+                "name": "cp_quantite",
+                "id": "cp_quantite",
+                "placeholder": "Quantité demandée",
+                "type": "integer",
+                "step": "1",
+                "confirmationNeeded": false
+            },
+            "contraintes": {
+                "min": 1,
+                "max": 30
+            }
+        },{
+            "name": "cp_ref_produit",
+            "type": "integer",
+            "libelle": "Produit concerné",
+            "nomObjet": "produit",
+            "unicite": false,
+            "visibilite": true
+        },
+        {
+            "name": "cp_ref_produit_menu",
+            "type": "integer",
+            "libelle": "Produit de type menu concerné",
+            "nomObjet": "produit",
+            "unicite": false,
+            "visibilite": true
+        },
+        {
+            "name": "cp_ref_menu_commande",
+            "type": "integer",
+            "libelle": "ID du menu liée dans la commande",
+            "nomObjet": "commande_produit",
+            "unicite": false,
+            "visibilite": true
+        },
+        {
+            "name": "cp_ref_commande",
+            "type": "integer",
+            "libelle": "Commande concerné",
+            "nomObjet": "commande",
+            "unicite": false,
+            "visibilite": true
+        },
+        {
+            "name": "cp_ref_format",
+            "type": "integer",
+            "libelle": "Format commandé",
+            "nomObjet": "format",
+            "unicite": false,
+            "visibilite": true,
+            "input": {
+                "name": "cp_ref_format",
+                "id": "cp_ref_format",
+                "placeholder": "Format commandé",
+                "type": "select",
+                "confirmationNeeded": false
+            }
+        }
+    ],
+    "actions": [
+        {
+            "action": "create",
+            "url": "creer_commande_produit"
+        },
+        {
+            "action": "read",
+            "url": "detail_commande_produit"
+        },
+        {
+            "action": "update",
+            "url": "modifier_commande_produit"
+        },
+        {
+            "action": "delete",
+            "url": "supprimer_commande_produit"
+        },
+        {
+            "action": "list",
+            "url": "lister_commande_produit"
+        }
+    ]
+}
